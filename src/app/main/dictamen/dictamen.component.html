@@ -1,0 +1,43 @@
+<div class="card my-4 py-3">
+    <div class="card-body">
+        <h6 class="fw-bold lead text-wrap text-center">
+            {{ labels.titulo }}<span class="required fs-6 fw-light">&emsp;{{ estado }}</span> 
+        </h6>
+
+        <form [formGroup]="form" class="pt-4">
+            <div class="row form-row">
+                <div class="col-md-3">
+                    <label class="form-label fw-bold">{{ labels.dictamen }}</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" formControlName="numeroDictamen" />
+                        <button class="btn btn-warning" type="button" (click)="editar($event)">
+                            <i class="fas fa-edit"></i></button>
+                        <button class="btn btn-primary" type="button" (click)="buscar($event)">
+                            <i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label fw-bold">{{ labels.fechaRecepcion }} <span
+                            class="required">*</span></label>
+                    <input type="date" class="form-control" formControlName="fechaRecepcion" [max]="obtenerHoy()" />
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label fw-bold">{{ labels.fechaValoracion }}</label>
+                    <input type="date" class="form-control" formControlName="fechaValoracion"
+                        [min]="obtenerFechaRecepcion()" [max]="obtenerHoy()" />
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label fw-bold">{{ labels.motivoCalificacion }}</label>
+                    <input type="text" class="form-control" formControlName="motivoCalificacion" />
+                </div>
+            </div>
+
+            <div class="row form-row pt-3">
+                <div class="col-md-12 d-flex flex-row-reverse">
+                    <button type="button" class="btn btn-primary" (click)="guardar($event)" [disabled]="form.invalid">
+                        {{ labels.guardar }}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

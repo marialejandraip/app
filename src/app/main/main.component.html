@@ -1,0 +1,13 @@
+<main class="container-fluid py-4 bg-primary">
+    <div class="container">
+        <cabecera></cabecera>
+
+        <dictamen (resultado)="obtenerDictamen($event)" (busqueda)="obtenerHistoriaClinica($event)"></dictamen>
+
+        <doctor (resultado)="obtenerDoctor($event)" [busqueda]="historiaClinica.doctor"></doctor>
+        <paciente (resultado)="obtenerPaciente($event)" [busqueda]="historiaClinica.paciente"></paciente>
+
+        <resultados [dictamen]="dictamen" [doctor]="doctor" [paciente]="paciente" [historiaClinica]="historiaClinica">
+        </resultados>
+    </div>
+</main>
